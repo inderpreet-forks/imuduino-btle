@@ -15,22 +15,44 @@ Please load the IMUduino_Bluetooth_UART_YawPitchRoll example sketch on to your b
 # Setup
 
 ## Mac OSX setup
-Install XCode. Then, install nvm.
+Install XCode.
+
+##Install nvm
+nvm is a bash script that can install and maintain versions of node on your system. To install it run,
+
+`curl https://raw.githubusercontent.com/creationix/nvm/v0.25.0/install.sh | bash`
+
+This should install nvm in your HOMEDIRECTORY/.nvm and add some stuff to your .bash_profile . You need to restart your terminal at this point so that it can load the script.
+
+##Install node using nvm
+You might have node already installed but the current version of `noble` does not work with node versions newer than 0.10.38 
+In order to install node version 0.10.38
+
+Run `nvm install v0.10.38`
+
+This should have to up and running the correct version of node. Confirm by running 
+
+`node --version`
 
 Run `nvm install node` to get node installed on your Mac without sudo.
 
-You should now install Meteor:
+##Install and run Meteor
+In order to run a lttle webserver for displaying data.
+
+Install meteor: 
 ```
-curl https://install.meteor.com/ | sh
+curl https://install.meteor.com/ | sh`
 ```
 
-On mac, you may need the xpc-connection npm package as well.  Add it to packages.json:
-```
-{
-  "noble": "0.3.14",
-  "xpc-connection": "0.1.3"
-}
-```
+You should now be able to navigate to your `/Meteor/meteor-ble-uart` Folder and
+
+Run: `meteor run`
+
+You should see some warnings but that's OK. Using your favourite browser navigate to 
+
+`localhost:3000' 
+
+and you should be able to see a webpage with three buttons and Yaw Pitch Roll fields. Scan for the imuduino and let it stream the data to you.
 
 ## Ubuntu Setup
 
